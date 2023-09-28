@@ -12,3 +12,6 @@ output:
 ## Project thoughts
 
 I am interested in exploring data related to the effects of carbon dioxide on GDP per capita. Is there a relationship between countries that consume a lot of carbon dioxide and their economic success? This project could range from viewing the effects of green policies on developed and developing countries, and see if there is causation, or correlation.
+
+
+
