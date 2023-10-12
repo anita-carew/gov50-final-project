@@ -16,9 +16,11 @@ I am interested in exploring data related to the effects of carbon dioxide on GD
 
 
 ```{r}
+library(tidyverse)
 final_wb_data <- read_csv("/Users/anitacarew/Desktop/HARVARD/Gov 50/gov50 final project/final_wb_data.csv")
 View(final_wb_data)
 ```
 
-
+##Project Proposal
+This
 
