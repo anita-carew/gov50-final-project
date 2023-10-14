@@ -9,18 +9,6 @@ output:
 
 
 
-## Project thoughts
+## Project proposal
 
-I am interested in exploring data related to the effects of carbon dioxide on GDP per capita. Is there a relationship between countries that consume a lot of carbon dioxide and their economic success? This project could range from viewing the effects of green policies on developed and developing countries, and see if there is causation, or correlation.
-
-
-
-```{r}
-library(tidyverse)
-final_wb_data <- read_csv("/Users/anitacarew/Desktop/HARVARD/Gov 50/gov50 final project/final_wb_data.csv")
-View(final_wb_data)
-```
-
-##Project Proposal
-This
 
