@@ -17,3 +17,43 @@ output:
   
   My outcome variable is the correlation relationship between this GDP and CO2 emissions. If the correlational variable is large and positive, then that means my hypothesis has been proven correct. If there seems to be no relationship between the variables (correlational coefficient is close to zero), that suggests economic growth has no effect on the emissions caused by higher production and consumption within a country. My hypothesis would also be wrong if this variable is large and negative, which implies GDP has a negative effect on emissions, and possibly that growth in GDP allows for technological growth that accounts for using more clean energy on a wider scale. I might also look into creating separate visualizations of the dataset in case analysis shows that more developed countries or that countries from a certain region have a much slower or faster slope of C02 and carbon emissions. 
 
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(readr)
+final_wb_data <- read_csv("final_wb_data.csv")
+final_wb_data
+```
+
+##Pivot longer the data
+```{r}
+long_wb_data <- final_wb_data |>
+  select(-`Country Code`) |>  
+  pivot_longer(
+    cols = `1990 [YR1990]`:`2022 [YR2022]`,
+    names_to = "year",
+    values_to = "GDP per capita"
+  ) |>
+  mutate(year = as.integer(year))
+long_wb_data
+
+
+```
+
+
+## Data visualization
+```{r}
+
+```
+
+
+
+
+
+
+
+
+
+
