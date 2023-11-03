@@ -17,3 +17,19 @@ output:
   My data is derived from the World Bank. My sample is made up of all the countries the World Bank measures, including some territories (total: 217). The independent variable is GDP per capita, PPP (current international $). This is measured by using the gross domestic product (GDP) expressed in current international dollars converted by purchasing power parity (PPP) conversion factor. The dependent variable is carbon emissions which we will assume rise as a result of higher GDP. This dependent variable is measures by carbon dioxide emissions (metric tons per capita), which is seen through emissions which are stemming from the burning of fossil fuels and the manufacture of cement. They include carbon dioxide produced during consumption of solid, liquid, and gas fuels and gas flaring.
   
   My outcome variable is the correlation relationship between this GDP and CO2 emissions. If the correlational variable is large and positive, then that means my hypothesis has been proven correct. If there seems to be no relationship between the variables (correlational coefficient is close to zero), that suggests economic growth has no effect on the emissions caused by higher production and consumption within a country. My hypothesis would also be wrong if this variable is large and negative, which implies GDP has a negative effect on emissions, and possibly that growth in GDP allows for technological growth that accounts for using more clean energy on a wider scale. I might also look into creating separate visualizations of the dataset in case analysis shows that more developed countries or that countries from a certain region have a much slower or faster slope of C02 and carbon emissions. 
+
+```{r}
+library(ggplot2)
+scatterplot <- ggplot(data = copy,
+       mapping = aes(x = amount,
+                     y = `Country Name`)) +
+  geom_point() +
+  labs(x = "GDP per capita, PPP (current international $)",
+       y = "Top 20 GDP countries in the world",
+       title = "GDP over time (1990-2022)",
+      )
+
+scatterplot
+ggsave("scatter_plot.png", plot, width = 6, height = 4, dpi = 300)
+knitr::include_graphics("scatter_plot.png")
+```

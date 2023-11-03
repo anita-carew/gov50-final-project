@@ -25,27 +25,118 @@ library(dplyr)
 library(readr)
 final_wb_data <- read_csv("final_wb_data.csv")
 final_wb_data
+
+
+
+final_wb_data$`1990 [YR1990]`<-as.numeric(as.character(final_wb_data$`1990 [YR1990]`))
+final_wb_data$`2022 [YR2022]`<-as.numeric(as.character(final_wb_data$`2022 [YR2022]`))
+final_wb_data$`1991 [YR1991]`<-as.numeric(as.character(final_wb_data$`1991 [YR1991]`))
+final_wb_data$`1992 [YR1992]`<-as.numeric(as.character(final_wb_data$`1992 [YR1992]`))
+final_wb_data$`1993 [YR1993]`<-as.numeric(as.character(final_wb_data$`1993 [YR1993]`))
+final_wb_data$`1994 [YR1994]`<-as.numeric(as.character(final_wb_data$`1994 [YR1994]`))
+final_wb_data$`1995 [YR1995]`<-as.numeric(as.character(final_wb_data$`1995 [YR1995]`))
+final_wb_data$`1996 [YR1996]`<-as.numeric(as.character(final_wb_data$`1996 [YR1996]`))
+final_wb_data$`1997 [YR1997]`<-as.numeric(as.character(final_wb_data$`1997 [YR1997]`))
+final_wb_data$`1998 [YR1998]`<-as.numeric(as.character(final_wb_data$`1998 [YR1998]`))
+final_wb_data$`1999 [YR1999]`<-as.numeric(as.character(final_wb_data$`1999 [YR1999]`))
+final_wb_data$`2000 [YR2000]`<-as.numeric(as.character(final_wb_data$`2000 [YR2000]`))
+final_wb_data$`2001 [YR2001]`<-as.numeric(as.character(final_wb_data$`2001 [YR2001]`))
+final_wb_data$`2002 [YR2002]`<-as.numeric(as.character(final_wb_data$`2002 [YR2002]`))
+final_wb_data$`2003 [YR2003]`<-as.numeric(as.character(final_wb_data$`2003 [YR2003]`))
+final_wb_data$`2004 [YR2004]`<-as.numeric(as.character(final_wb_data$`2004 [YR2004]`))
+final_wb_data$`2005 [YR2005]`<-as.numeric(as.character(final_wb_data$`2005 [YR2005]`))
+final_wb_data$`2006 [YR2006]`<-as.numeric(as.character(final_wb_data$`2006 [YR2006]`))
+final_wb_data$`2007 [YR2007]`<-as.numeric(as.character(final_wb_data$`2007 [YR2007]`))
+final_wb_data$`2008 [YR2008]`<-as.numeric(as.character(final_wb_data$`2008 [YR2008]`))
+final_wb_data$`2009 [YR2009]`<-as.numeric(as.character(final_wb_data$`2009 [YR2009]`))
+final_wb_data$`2010 [YR2010]`<-as.numeric(as.character(final_wb_data$`2010 [YR2010]`))
+final_wb_data$`2011 [YR2011]`<-as.numeric(as.character(final_wb_data$`2011 [YR2011]`))
+final_wb_data$`2012 [YR2012]`<-as.numeric(as.character(final_wb_data$`2012 [YR2012]`))
+final_wb_data$`2013 [YR2013]`<-as.numeric(as.character(final_wb_data$`2013 [YR2013]`))
+final_wb_data$`2014 [YR2014]`<-as.numeric(as.character(final_wb_data$`2014 [YR2014]`))
+final_wb_data$`2015 [YR2015]`<-as.numeric(as.character(final_wb_data$`2015 [YR2015]`))
+final_wb_data$`2016 [YR2016]`<-as.numeric(as.character(final_wb_data$`2016 [YR2016]`))
+final_wb_data$`2017 [YR2017]`<-as.numeric(as.character(final_wb_data$`2017 [YR2017]`))
+final_wb_data$`2018 [YR2018]`<-as.numeric(as.character(final_wb_data$`2018 [YR2018]`))
+final_wb_data$`2019 [YR2019]`<-as.numeric(as.character(final_wb_data$`2019 [YR2019]`))
+final_wb_data$`2020 [YR2020]`<-as.numeric(as.character(final_wb_data$`2020 [YR2020]`))
+final_wb_data$`2021 [YR2021]`<-as.numeric(as.character(final_wb_data$`2021 [YR2021]`))
+
+
+
+ranks<- final_wb_data|>
+  filter(`Series Name`== "GDP per capita, PPP (current international $)")|>
+  group_by(`Country Name`)|>
+  mutate(totalgdp= sum(`1990 [YR1990]`, `1991 [YR1991]`, `1992 [YR1992]`, `1993 [YR1993]`, `1994 [YR1994]`, `1995 [YR1995]`, `1996 [YR1996]`, `1997 [YR1997]`, `1998 [YR1998]`, `1999 [YR1999]`, `2000 [YR2000]`, `2001 [YR2001]`, `2002 [YR2002]`, `2003 [YR2003]`, `2004 [YR2004]`, `2005 [YR2005]`, `2006 [YR2006]`, `2007 [YR2007]`, `2008 [YR2008]`, `2009 [YR2009]`, `2010 [YR2010]`, `2011 [YR2011]`, `2012 [YR2012]`, `2013 [YR2013]`, `2014 [YR2014]`, `2015 [YR2015]`, `2016 [YR2016]`, `2017 [YR2017]`, `2018 [YR2018]`, `2019 [YR2019]`, `2020 [YR2020]`,  `2021 [YR2021]`, `2022 [YR2022]`, na.rm=TRUE))
+
+ranks
+
+
+
+
 ```
 
-##Pivot longer the data
+
+##Rank top 20 of data 'total gdp' column
 ```{r}
-long_wb_data <- final_wb_data |>
-  select(-`Country Code`) |>  
-  pivot_longer(
-    cols = `1990 [YR1990]`:`2022 [YR2022]`,
-    names_to = "year",
-    values_to = "GDP per capita"
-  ) |>
+
+
+
+ranks <- final_wb_data[order(desc(final_wb_data$`2019 [YR2019]`)),]
+ranks <- ranks[1:20,]
+
+
+ranks
+
+```
+
+
+
+##Pivot longer
+```{r}
+copy<- ranks
+copy<- copy|>
+  pivot_longer(cols = `1990 [YR1990]` : `2022 [YR2022]`,
+               names_to = "year",
+               values_to = "amount")|>
   mutate(year = as.integer(year))
-long_wb_data
+copy
+```
+
+
+
+##Visualize data on a scatter plot
+```{r}
+library(ggplot2)
+scatterplot <- ggplot(data = copy,
+       mapping = aes(x = amount,
+                     y = `Country Name`)) +
+  geom_point() +
+  labs(x = "GDP per capita, PPP (current international $)",
+       y = "Top 20 GDP countries in the world",
+       title = "GDP over time (1990-2022)",
+      )
+
+scatterplot
 
 
 ```
+
+
+##Explanation
+
+I isolates the top 20 GDPs in the world in 2019. Then, I created the data visualization from those values across time.
+
+
+
 
 
 ## Data visualization
 ```{r}
-
+ggplot(data = df,
+       mapping = aes(x = amount,
+                     y = `Country Name`)) +
+  geom_point()
 ```
 
 
