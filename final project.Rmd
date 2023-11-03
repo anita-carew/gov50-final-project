@@ -123,6 +123,9 @@ scatterplot
 ```
 
 
+
+
+
 ##Explanation
 
 I isolates the top 20 GDPs in the world in 2019. Then, I created the data visualization from those values across time.
@@ -131,13 +134,7 @@ I isolates the top 20 GDPs in the world in 2019. Then, I created the data visual
 
 
 
-## Data visualization
-```{r}
-ggplot(data = df,
-       mapping = aes(x = amount,
-                     y = `Country Name`)) +
-  geom_point()
-```
+
 
 
 

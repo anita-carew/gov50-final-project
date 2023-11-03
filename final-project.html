@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["final_wb_data.csv","final-project_files/anchor-4.2.2/anchor.min.js","final-project_files/bowser-1.9.3/bowser.min.js","final-project_files/distill-2.2.21/template.v2.js","final-project_files/header-attrs-2.25/header-attrs.js","final-project_files/jquery-3.6.0/jquery-3.6.0.js","final-project_files/jquery-3.6.0/jquery-3.6.0.min.js","final-project_files/jquery-3.6.0/jquery-3.6.0.min.map","final-project_files/popper-2.6.0/popper.min.js","final-project_files/tippy-6.2.7/tippy-bundle.umd.min.js","final-project_files/tippy-6.2.7/tippy-light-border.css","final-project_files/tippy-6.2.7/tippy.css","final-project_files/tippy-6.2.7/tippy.umd.min.js","final-project_files/webcomponents-2.0.0/webcomponents.js","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.25/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","index.html","P_Data_Extract_From_World_Development_Indicators (2)/446a2bc8-b94f-4c29-9070-34731504d180_Series - Metadata.csv","P_Data_Extract_From_World_Development_Indicators (2)/world_bank_data.csv"]}
+  {"type":"character","attributes":{},"value":["final_wb_data.csv","final-project_files/anchor-4.2.2/anchor.min.js","final-project_files/bowser-1.9.3/bowser.min.js","final-project_files/distill-2.2.21/template.v2.js","final-project_files/figure-html5/unnamed-chunk-4-1.png","final-project_files/header-attrs-2.25/header-attrs.js","final-project_files/jquery-3.6.0/jquery-3.6.0.js","final-project_files/jquery-3.6.0/jquery-3.6.0.min.js","final-project_files/jquery-3.6.0/jquery-3.6.0.min.map","final-project_files/popper-2.6.0/popper.min.js","final-project_files/tippy-6.2.7/tippy-bundle.umd.min.js","final-project_files/tippy-6.2.7/tippy-light-border.css","final-project_files/tippy-6.2.7/tippy.css","final-project_files/tippy-6.2.7/tippy.umd.min.js","final-project_files/webcomponents-2.0.0/webcomponents.js","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.25/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","index.html","P_Data_Extract_From_World_Development_Indicators (2)/446a2bc8-b94f-4c29-9070-34731504d180_Series - Metadata.csv","P_Data_Extract_From_World_Development_Indicators (2)/world_bank_data.csv","scatter_plot.png"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1521,7 +1521,187 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>My research question for this project is: Does a country’s GDP increase its carbon emissions? The widely held belief by political and climate scientists around the world has long been that the higher a country’s GDP, the more their carbon emissions increase. This goes along with the idea that if a country is more economicaly developed, ergo more technologically advanced with a more elaborate quality of lifestyle for its citizens, their waste and consumption will lead to a higher carbon emission within said country. There is only a little evidence such as the 2016 report by the International Energy Agency that claims some countries do exist that have been able to reduce Green House Gas (GHG) emissions while growing GDP. Nevertheless, this idea assumes that a country’s technology and economy is at a stable enough level where they can put money into climate conscious policy. Most carbon emissions-GDP studies discover that countries usually spend the most carbon emissions when they are attempting to increase economic growth considerably. Thus, I expect that GDP and carbon emissions per capita have a positive relationship.</p>
 <p>My data is derived from the World Bank. My sample is made up of all the countries the World Bank measures, including some territories (total: 217). The independent variable is GDP per capita, PPP (current international $). This is measured by using the gross domestic product (GDP) expressed in current international dollars converted by purchasing power parity (PPP) conversion factor. The dependent variable is carbon emissions which we will assume rise as a result of higher GDP. This dependent variable is measures by carbon dioxide emissions (metric tons per capita), which is seen through emissions which are stemming from the burning of fossil fuels and the manufacture of cement. They include carbon dioxide produced during consumption of solid, liquid, and gas fuels and gas flaring.</p>
 <p>My outcome variable is the correlation relationship between this GDP and CO2 emissions. If the correlational variable is large and positive, then that means my hypothesis has been proven correct. If there seems to be no relationship between the variables (correlational coefficient is close to zero), that suggests economic growth has no effect on the emissions caused by higher production and consumption within a country. My hypothesis would also be wrong if this variable is large and negative, which implies GDP has a negative effect on emissions, and possibly that growth in GDP allows for technological growth that accounts for using more clean energy on a wider scale. I might also look into creating separate visualizations of the dataset in case analysis shows that more developed countries or that countries from a certain region have a much slower or faster slope of C02 and carbon emissions.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readr.tidyverse.org'>readr</a></span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"final_wb_data.csv"</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span></span></code></pre>
+</div>
+<pre><code># A tibble: 537 × 36
+   `Country Name` `Country Code` `Series Name`         `1990 [YR1990]`
+   &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;                 &lt;chr&gt;          
+ 1 Afghanistan    AFG            GDP per capita, PPP … N/A            
+ 2 Afghanistan    AFG            CO2 emissions (metri… 0.191389345    
+ 3 Albania        ALB            GDP per capita, PPP … 2549.746801    
+ 4 Albania        ALB            CO2 emissions (metri… 1.844035463    
+ 5 Algeria        DZA            GDP per capita, PPP … 6974.076379    
+ 6 Algeria        DZA            CO2 emissions (metri… 2.466365604    
+ 7 American Samoa ASM            GDP per capita, PPP … N/A            
+ 8 American Samoa ASM            CO2 emissions (metri… N/A            
+ 9 Andorra        AND            GDP per capita, PPP … N/A            
+10 Andorra        AND            CO2 emissions (metri… 7.592152178    
+# ℹ 527 more rows
+# ℹ 32 more variables: `1991 [YR1991]` &lt;chr&gt;, `1992 [YR1992]` &lt;chr&gt;,
+#   `1993 [YR1993]` &lt;chr&gt;, `1994 [YR1994]` &lt;chr&gt;,
+#   `1995 [YR1995]` &lt;chr&gt;, `1996 [YR1996]` &lt;chr&gt;,
+#   `1997 [YR1997]` &lt;chr&gt;, `1998 [YR1998]` &lt;chr&gt;,
+#   `1999 [YR1999]` &lt;chr&gt;, `2000 [YR2000]` &lt;chr&gt;,
+#   `2001 [YR2001]` &lt;chr&gt;, `2002 [YR2002]` &lt;chr&gt;, …</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`1990 [YR1990]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`1990 [YR1990]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2022 [YR2022]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2022 [YR2022]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`1991 [YR1991]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`1991 [YR1991]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`1992 [YR1992]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`1992 [YR1992]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`1993 [YR1993]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`1993 [YR1993]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`1994 [YR1994]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`1994 [YR1994]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`1995 [YR1995]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`1995 [YR1995]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`1996 [YR1996]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`1996 [YR1996]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`1997 [YR1997]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`1997 [YR1997]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`1998 [YR1998]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`1998 [YR1998]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`1999 [YR1999]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`1999 [YR1999]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2000 [YR2000]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2000 [YR2000]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2001 [YR2001]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2001 [YR2001]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2002 [YR2002]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2002 [YR2002]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2003 [YR2003]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2003 [YR2003]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2004 [YR2004]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2004 [YR2004]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2005 [YR2005]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2005 [YR2005]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2006 [YR2006]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2006 [YR2006]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2007 [YR2007]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2007 [YR2007]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2008 [YR2008]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2008 [YR2008]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2009 [YR2009]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2009 [YR2009]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2010 [YR2010]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2010 [YR2010]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2011 [YR2011]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2011 [YR2011]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2012 [YR2012]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2012 [YR2012]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2013 [YR2013]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2013 [YR2013]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2014 [YR2014]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2014 [YR2014]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2015 [YR2015]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2015 [YR2015]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2016 [YR2016]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2016 [YR2016]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2017 [YR2017]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2017 [YR2017]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2018 [YR2018]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2018 [YR2018]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2019 [YR2019]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2019 [YR2019]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2020 [YR2020]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2020 [YR2020]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2021 [YR2021]`</span><span class='op'>&lt;-</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2021 [YR2021]`</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span></span>
+<span></span>
+<span><span class='va'>ranks</span><span class='op'>&lt;-</span> <span class='va'>final_wb_data</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>`Series Name`</span><span class='op'>==</span> <span class='st'>"GDP per capita, PPP (current international $)"</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>`Country Name`</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>totalgdp<span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>`1990 [YR1990]`</span>, <span class='va'>`1991 [YR1991]`</span>, <span class='va'>`1992 [YR1992]`</span>, <span class='va'>`1993 [YR1993]`</span>, <span class='va'>`1994 [YR1994]`</span>, <span class='va'>`1995 [YR1995]`</span>, <span class='va'>`1996 [YR1996]`</span>, <span class='va'>`1997 [YR1997]`</span>, <span class='va'>`1998 [YR1998]`</span>, <span class='va'>`1999 [YR1999]`</span>, <span class='va'>`2000 [YR2000]`</span>, <span class='va'>`2001 [YR2001]`</span>, <span class='va'>`2002 [YR2002]`</span>, <span class='va'>`2003 [YR2003]`</span>, <span class='va'>`2004 [YR2004]`</span>, <span class='va'>`2005 [YR2005]`</span>, <span class='va'>`2006 [YR2006]`</span>, <span class='va'>`2007 [YR2007]`</span>, <span class='va'>`2008 [YR2008]`</span>, <span class='va'>`2009 [YR2009]`</span>, <span class='va'>`2010 [YR2010]`</span>, <span class='va'>`2011 [YR2011]`</span>, <span class='va'>`2012 [YR2012]`</span>, <span class='va'>`2013 [YR2013]`</span>, <span class='va'>`2014 [YR2014]`</span>, <span class='va'>`2015 [YR2015]`</span>, <span class='va'>`2016 [YR2016]`</span>, <span class='va'>`2017 [YR2017]`</span>, <span class='va'>`2018 [YR2018]`</span>, <span class='va'>`2019 [YR2019]`</span>, <span class='va'>`2020 [YR2020]`</span>,  <span class='va'>`2021 [YR2021]`</span>, <span class='va'>`2022 [YR2022]`</span>, na.rm<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>ranks</span></span></code></pre>
+</div>
+<pre><code># A tibble: 266 × 37
+# Groups:   Country Name [266]
+   `Country Name`      `Country Code` `Series Name`    `1990 [YR1990]`
+   &lt;chr&gt;               &lt;chr&gt;          &lt;chr&gt;                      &lt;dbl&gt;
+ 1 Afghanistan         AFG            GDP per capita,…             NA 
+ 2 Albania             ALB            GDP per capita,…           2550.
+ 3 Algeria             DZA            GDP per capita,…           6974.
+ 4 American Samoa      ASM            GDP per capita,…             NA 
+ 5 Andorra             AND            GDP per capita,…             NA 
+ 6 Angola              AGO            GDP per capita,…           3283.
+ 7 Antigua and Barbuda ATG            GDP per capita,…          11436.
+ 8 Argentina           ARG            GDP per capita,…           7184.
+ 9 Armenia             ARM            GDP per capita,…           2757.
+10 Aruba               ABW            GDP per capita,…          20754.
+# ℹ 256 more rows
+# ℹ 33 more variables: `1991 [YR1991]` &lt;dbl&gt;, `1992 [YR1992]` &lt;dbl&gt;,
+#   `1993 [YR1993]` &lt;dbl&gt;, `1994 [YR1994]` &lt;dbl&gt;,
+#   `1995 [YR1995]` &lt;dbl&gt;, `1996 [YR1996]` &lt;dbl&gt;,
+#   `1997 [YR1997]` &lt;dbl&gt;, `1998 [YR1998]` &lt;dbl&gt;,
+#   `1999 [YR1999]` &lt;dbl&gt;, `2000 [YR2000]` &lt;dbl&gt;,
+#   `2001 [YR2001]` &lt;dbl&gt;, `2002 [YR2002]` &lt;dbl&gt;, …</code></pre>
+</div>
+##Rank top 20 of data ‘total gdp’ column
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>ranks</span> <span class='op'>&lt;-</span> <span class='va'>final_wb_data</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/order.html'>order</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/desc.html'>desc</a></span><span class='op'>(</span><span class='va'>final_wb_data</span><span class='op'>$</span><span class='va'>`2019 [YR2019]`</span><span class='op'>)</span><span class='op'>)</span>,<span class='op'>]</span></span>
+<span><span class='va'>ranks</span> <span class='op'>&lt;-</span> <span class='va'>ranks</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>20</span>,<span class='op'>]</span></span>
+<span></span>
+<span></span>
+<span><span class='va'>ranks</span></span></code></pre>
+</div>
+<pre><code># A tibble: 20 × 36
+   `Country Name`       `Country Code` `Series Name`   `1990 [YR1990]`
+   &lt;chr&gt;                &lt;chr&gt;          &lt;chr&gt;                     &lt;dbl&gt;
+ 1 Macao SAR, China     MAC            GDP per capita…          26720.
+ 2 Luxembourg           LUX            GDP per capita…          29950.
+ 3 Singapore            SGP            GDP per capita…          23813.
+ 4 Qatar                QAT            GDP per capita…             NA 
+ 5 Ireland              IRL            GDP per capita…          13744.
+ 6 Bermuda              BMU            GDP per capita…          34871.
+ 7 Cayman Islands       CYM            GDP per capita…             NA 
+ 8 United Arab Emirates ARE            GDP per capita…          83843.
+ 9 Switzerland          CHE            GDP per capita…          28463.
+10 Norway               NOR            GDP per capita…          18462.
+11 United States        USA            GDP per capita…          23889.
+12 Brunei Darussalam    BRN            GDP per capita…          55168.
+13 North America        NAC            GDP per capita…          23526.
+14 San Marino           SMR            GDP per capita…             NA 
+15 Hong Kong SAR, China HKG            GDP per capita…          18250.
+16 Netherlands          NLD            GDP per capita…          19176.
+17 Denmark              DNK            GDP per capita…          18244.
+18 Austria              AUT            GDP per capita…          19473.
+19 Iceland              ISL            GDP per capita…             NA 
+20 Germany              DEU            GDP per capita…          19464.
+# ℹ 32 more variables: `1991 [YR1991]` &lt;dbl&gt;, `1992 [YR1992]` &lt;dbl&gt;,
+#   `1993 [YR1993]` &lt;dbl&gt;, `1994 [YR1994]` &lt;dbl&gt;,
+#   `1995 [YR1995]` &lt;dbl&gt;, `1996 [YR1996]` &lt;dbl&gt;,
+#   `1997 [YR1997]` &lt;dbl&gt;, `1998 [YR1998]` &lt;dbl&gt;,
+#   `1999 [YR1999]` &lt;dbl&gt;, `2000 [YR2000]` &lt;dbl&gt;,
+#   `2001 [YR2001]` &lt;dbl&gt;, `2002 [YR2002]` &lt;dbl&gt;,
+#   `2003 [YR2003]` &lt;dbl&gt;, `2004 [YR2004]` &lt;dbl&gt;, …</code></pre>
+</div>
+##Pivot longer
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>copy</span><span class='op'>&lt;-</span> <span class='va'>ranks</span></span>
+<span><span class='va'>copy</span><span class='op'>&lt;-</span> <span class='va'>copy</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_longer.html'>pivot_longer</a></span><span class='op'>(</span>cols <span class='op'>=</span> <span class='va'>`1990 [YR1990]`</span> <span class='op'>:</span> <span class='va'>`2022 [YR2022]`</span>,</span>
+<span>               names_to <span class='op'>=</span> <span class='st'>"year"</span>,</span>
+<span>               values_to <span class='op'>=</span> <span class='st'>"amount"</span><span class='op'>)</span><span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>year <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/integer.html'>as.integer</a></span><span class='op'>(</span><span class='va'>year</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>copy</span></span></code></pre>
+</div>
+<pre><code># A tibble: 660 × 5
+   `Country Name`   `Country Code` `Series Name`           year amount
+   &lt;chr&gt;            &lt;chr&gt;          &lt;chr&gt;                  &lt;int&gt;  &lt;dbl&gt;
+ 1 Macao SAR, China MAC            GDP per capita, PPP (…    NA 26720.
+ 2 Macao SAR, China MAC            GDP per capita, PPP (…    NA 27673.
+ 3 Macao SAR, China MAC            GDP per capita, PPP (…    NA 31208.
+ 4 Macao SAR, China MAC            GDP per capita, PPP (…    NA 32869.
+ 5 Macao SAR, China MAC            GDP per capita, PPP (…    NA 34272.
+ 6 Macao SAR, China MAC            GDP per capita, PPP (…    NA 35428.
+ 7 Macao SAR, China MAC            GDP per capita, PPP (…    NA 35245.
+ 8 Macao SAR, China MAC            GDP per capita, PPP (…    NA 35109.
+ 9 Macao SAR, China MAC            GDP per capita, PPP (…    NA 33309.
+10 Macao SAR, China MAC            GDP per capita, PPP (…    NA 32459.
+# ℹ 650 more rows</code></pre>
+</div>
+##Visualize data on a scatter plot
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span></span>
+<span><span class='va'>scatterplot</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>copy</span>,</span>
+<span>       mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>amount</span>,</span>
+<span>                     y <span class='op'>=</span> <span class='va'>`Country Name`</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"GDP per capita, PPP (current international $)"</span>,</span>
+<span>       y <span class='op'>=</span> <span class='st'>"Top 20 GDP countries in the world"</span>,</span>
+<span>       title <span class='op'>=</span> <span class='st'>"GDP over time (1990-2022)"</span>,</span>
+<span>      <span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>scatterplot</span></span></code></pre>
+</div>
+<p><img src="final-project_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
+</div>
+<p>##Explanation</p>
+<p>I isolates the top 20 GDPs in the world in 2019. Then, I created the data visualization from those values across time.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
