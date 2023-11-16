@@ -17,6 +17,7 @@ output:
   
   My outcome variable is the correlation relationship between this GDP and CO2 emissions. If the correlational variable is large and positive, then that means my hypothesis has been proven correct. If there seems to be no relationship between the variables (correlational coefficient is close to zero), that suggests economic growth has no effect on the emissions caused by higher production and consumption within a country. My hypothesis would also be wrong if this variable is large and negative, which implies GDP has a negative effect on emissions, and possibly that growth in GDP allows for technological growth that accounts for using more clean energy on a wider scale. I might also look into creating separate visualizations of the dataset in case analysis shows that more developed countries or that countries from a certain region have a much slower or faster slope of C02 and carbon emissions. 
 
+##Final Mileston #3
 ##Turn year amounts from characters into numbers
 ```{r}
 library(tidyverse)
@@ -80,8 +81,7 @@ ranks
 ##Rank top 20 of data 'total gdp' column
 ```{r}
 
-
-
+#M3 Ranks
 ranks <- final_wb_data[order(desc(final_wb_data$`2019 [YR2019]`)),]
 ranks <- ranks[1:20,]
 
@@ -89,23 +89,19 @@ ranks <- ranks[1:20,]
 ranks
 
 ```
-
-
-
-##Pivot longer
 ```{r}
-copy<- ranks
-copy<- copy|>
+copy <- ranks |>
   pivot_longer(cols = `1990 [YR1990]` : `2022 [YR2022]`,
                names_to = "year",
-               values_to = "amount")|>
-  mutate(year = as.integer(year))
+               values_to = "amount") |>
+  mutate(year = as.integer(gsub("\\D", "", year)))
+
 copy
+
 ```
 
 
-
-##Visualize data on a scatter plot
+##Visualize GDP data on a scatter plot
 ```{r}
 library(ggplot2)
 scatterplot <- ggplot(data = copy,
@@ -142,10 +138,45 @@ Finally, I turned this all into a scatterplot for the top 20 GDP countries.
 
 
 
+##Final Milestone #4
 
+#Only choose top 20 rank countries
+```{r}
+CO2 <- final_wb_data |>
+  group_by(`Country Name`) |>
+    filter(`Country Name` == "Macao SAR, China" | `Country Name` == "Luxembourg"| `Country Name` == "Singapore"| `Country Name` == "Qatar"| `Country Name` == "Ireland"| `Country Name` == "Bermuda"| `Country Name` == "Cayman Islands"| `Country Name` == "United Arab Emirates"| `Country Name` == "Switzerland"| `Country Name` == "Norway"| `Country Name` == "United States"| `Country Name` == "Brunei Darussalam"| `Country Name` == "North America"| `Country Name` == "San Marino"| `Country Name` == "Hong Kong SAR, China"| `Country Name` == "Netherlands"| `Country Name` == "Denmark"| `Country Name` == "Austria"| `Country Name` == "Iceland"| `Country Name` == "Germany")
+  CO2
 
+```
 
+#Pivot longer
+```{r}
+copy2 <- CO2 |>
+  pivot_longer(cols = `1990 [YR1990]` : `2022 [YR2022]`,
+               names_to = "year",
+               values_to = "amount") |>
+  mutate(year = as.integer(gsub("\\D", "", year)))|>
+  filter(`Series Name`== "CO2 emissions (metric tons per capita)")
+copy2
 
+```
 
+#Make scatter plot and filter out GDP
+```{r}
+library(ggplot2)
+scatterplot2 <- ggplot(data = copy2,
+       mapping = aes(x = amount,
+                     y = `Country Name`)) +
+  geom_point() +
+  labs(x = "CO2 emissions (metric tons per capita)",
+       y = "Top 20 GDP countries in the world",
+       title = "CO2 emissions over time",
+      )
+
+scatterplot2
+```
+##Explanation
+
+This second visualization is of the same 'top 20 GDP' countries, but with their CO2 emissions over time. As we can see on the graph, CO2 emissions have increased over time. Thus, we notice that both there is a general trend where CO2 and GDP grow over time. It is important to note that this is not necessarily a causal relationship. Nevertheless, it is interesting to see how GDP has grown more over time than CO2.
 
 
