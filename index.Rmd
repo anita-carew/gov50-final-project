@@ -161,6 +161,20 @@ copy2
 
 ```
 
+```{r}
+df <- final_wb_data |>
+  janitor::clean_names() |>
+  mut |>
+mutate(series_name = if_else(series_name == "CO2 emissions (metric tons per capita)", "CO2", "GDP"))
+  pivot_longer(cols = starts_with("x"), 
+               names_to = c("year", "variable"), 
+               names_sep = "_") %>%
+  separate(variable, into = c("series_name", "measure"), sep = "_", extra = "merge") %>%
+  spread(key = measure, value = value) %>%
+  select(country_name, country_code, year, GDP, CO2)
+```
+
+
 #Make scatter plot and filter out GDP
 ```{r}
 library(ggplot2)

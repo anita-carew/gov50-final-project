@@ -160,6 +160,74 @@ copy2 <- CO2 |>
 copy2
 
 ```
+##Made 'final_df, which is the graph I can use to make the regression and the main relationship of interest - December 8th
+```{r}
+df <- final_wb_data |>
+  janitor::clean_names() |>
+  mutate(series_name = if_else(series_name == "CO2 emissions (metric tons per capita)", "CO2", "GDP")) 
+
+co2 <- df |>
+  filter(series_name == "CO2") |>
+  pivot_longer(cols = starts_with("x"),  
+               names_to = c("series", "year"),  
+               names_pattern = "x(\\d+)_yr(\\d+)",
+               values_to = "CO2") %>%
+  select(country_name, country_code, year, CO2)
+
+
+gdp <- df |>
+  filter(series_name == "GDP")  |>
+  pivot_longer(cols = starts_with("x"),  
+               names_to = c("series", "year"),  
+               names_pattern = "x(\\d+)_yr(\\d+)",  
+               values_to = "GDP") %>%
+  select(country_name, country_code, year, GDP)
+
+final_df <- left_join(co2, gdp, by = c("country_code", "country_name", "year"))
+```
+
+##Making line plot of both variables - December 8th
+```{r}
+
+ggplot(final_df, aes(x = year, y = GDP)) +
+  geom_line() 
+
+  ggplot(final_df, aes(x = year, y = CO2)) +
+  geom_line() 
+
+#returns multiple lines
+ggplot(final_df, aes(x = year, group = country_name)) +
+  geom_line(aes(y = GDP, color = "GDP"), size = 1) +
+  geom_line(aes(y = CO2, color = "CO2"), size = 1) +
+  labs(x = "Year", y = "Values", title = "GDP and CO2 Over Time") +
+  scale_color_manual(values = c(GDP = "blue", CO2 = "red")) +
+  theme_minimal()
+
+  
+#tried making each year into a mean but it returns a blank graph
+agg_data <- final_df |>
+  group_by(year) |>
+  summarise(
+    CO2 = mean(CO2), 
+    GDP = mean(GDP)
+  )
+ggplot(agg_data, aes(x = year)) +
+  geom_line(aes(y = GDP, color = "GDP"), size = 1) +
+  geom_line(aes(y = CO2, color = "CO2"), size = 1) +
+  labs(x = "Year", y = "Values", title = "GDP and CO2 Over Time") +
+  scale_color_manual(values = c(GDP = "blue", CO2 = "red")) +
+  theme_minimal()
+  
+##new try
+
+ggplot(final_df, aes(x = year)) +
+  geom_line(aes(y = GDP, color = "GDP"), size = 1) +
+  geom_line(aes(y = CO2, color = "CO2"), size = 1) +
+  labs(x = "Year", y = "Values", title = "GDP and CO2 Over Time") +
+  scale_color_manual(values = c(GDP = "blue", CO2 = "red")) +
+  theme_minimal()
+```
+
 
 #Make scatter plot and filter out GDP
 ```{r}
@@ -179,4 +247,14 @@ scatterplot2
 
 This second visualization is of the same 'top 20 GDP' countries, but with their CO2 emissions over time. As we can see on the graph, CO2 emissions have increased over time. Thus, we notice that both there is a general trend where CO2 and GDP grow over time. It is important to note that this is not necessarily a causal relationship. Nevertheless, it is interesting to see how GDP has grown more over time than CO2.
 
+
+
+
+December 8th - Things still missing for my final project
+
+One line chart graph that has one line showing CO2 over time and one line showing GDP over time. This will show the relationship of the variables. Use final_df for this
+
+One regression table. Use final_df for this.
+
+Everything else just write up the lab report.
 
