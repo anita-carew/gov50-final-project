@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["final_wb_data.csv","final-project_files/anchor-4.2.2/anchor.min.js","final-project_files/bowser-1.9.3/bowser.min.js","final-project_files/distill-2.2.21/template.v2.js","final-project_files/figure-html5/unnamed-chunk-4-1.png","final-project_files/figure-html5/unnamed-chunk-7-1.png","final-project_files/header-attrs-2.25/header-attrs.js","final-project_files/jquery-3.6.0/jquery-3.6.0.js","final-project_files/jquery-3.6.0/jquery-3.6.0.min.js","final-project_files/jquery-3.6.0/jquery-3.6.0.min.map","final-project_files/popper-2.6.0/popper.min.js","final-project_files/tippy-6.2.7/tippy-bundle.umd.min.js","final-project_files/tippy-6.2.7/tippy-light-border.css","final-project_files/tippy-6.2.7/tippy.css","final-project_files/tippy-6.2.7/tippy.umd.min.js","final-project_files/webcomponents-2.0.0/webcomponents.js","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.25/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","index.html","P_Data_Extract_From_World_Development_Indicators (2)/446a2bc8-b94f-4c29-9070-34731504d180_Series - Metadata.csv","P_Data_Extract_From_World_Development_Indicators (2)/world_bank_data.csv","scatter_plot.png"]}
+  {"type":"character","attributes":{},"value":["final_wb_data.csv","final-project_files/anchor-4.2.2/anchor.min.js","final-project_files/bowser-1.9.3/bowser.min.js","final-project_files/distill-2.2.21/template.v2.js","final-project_files/figure-html5/unnamed-chunk-4-1.png","final-project_files/figure-html5/unnamed-chunk-7-1.png","final-project_files/figure-html5/unnamed-chunk-9-1.png","final-project_files/figure-html5/unnamed-chunk-9-2.png","final-project_files/header-attrs-2.25/header-attrs.js","final-project_files/jquery-3.6.0/jquery-3.6.0.js","final-project_files/jquery-3.6.0/jquery-3.6.0.min.js","final-project_files/jquery-3.6.0/jquery-3.6.0.min.map","final-project_files/popper-2.6.0/popper.min.js","final-project_files/tippy-6.2.7/tippy-bundle.umd.min.js","final-project_files/tippy-6.2.7/tippy-light-border.css","final-project_files/tippy-6.2.7/tippy.css","final-project_files/tippy-6.2.7/tippy.umd.min.js","final-project_files/webcomponents-2.0.0/webcomponents.js","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/figure-html5/unnamed-chunk-7-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.25/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","index.html","P_Data_Extract_From_World_Development_Indicators (2)/446a2bc8-b94f-4c29-9070-34731504d180_Series - Metadata.csv","P_Data_Extract_From_World_Development_Indicators (2)/world_bank_data.csv","scatter_plot.png"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1783,7 +1783,144 @@ My initial plan for this visualization was to only focus on making a visualizati
 </div>
 <p>##Explanation</p>
 <p>This second visualization is of the same ‘top 20 GDP’ countries, but with their CO2 emissions over time. As we can see on the graph, CO2 emissions have increased over time. Thus, we notice that both there is a general trend where CO2 and GDP grow over time. It is important to note that this is not necessarily a causal relationship. Nevertheless, it is interesting to see how GDP has grown more over time than CO2.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+##Made ’final_df, which is the graph I can use to make the regression and the main relationship of interest - December 8th
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>df</span> <span class='op'>&lt;-</span> <span class='va'>final_wb_data</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'>janitor</span><span class='fu'>::</span><span class='fu'><a href='https://sfirke.github.io/janitor/reference/clean_names.html'>clean_names</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>series_name <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>series_name</span> <span class='op'>==</span> <span class='st'>"CO2 emissions (metric tons per capita)"</span>, <span class='st'>"CO2"</span>, <span class='st'>"GDP"</span><span class='op'>)</span><span class='op'>)</span> </span>
+<span></span>
+<span><span class='va'>co2</span> <span class='op'>&lt;-</span> <span class='va'>df</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>series_name</span> <span class='op'>==</span> <span class='st'>"CO2"</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_longer.html'>pivot_longer</a></span><span class='op'>(</span>cols <span class='op'>=</span> <span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>starts_with</a></span><span class='op'>(</span><span class='st'>"x"</span><span class='op'>)</span>,  </span>
+<span>               names_to <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"series"</span>, <span class='st'>"year"</span><span class='op'>)</span>,  </span>
+<span>               names_pattern <span class='op'>=</span> <span class='st'>"x(\\d+)_yr(\\d+)"</span>,</span>
+<span>               values_to <span class='op'>=</span> <span class='st'>"CO2"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>country_name</span>, <span class='va'>country_code</span>, <span class='va'>year</span>, <span class='va'>CO2</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>gdp</span> <span class='op'>&lt;-</span> <span class='va'>df</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>series_name</span> <span class='op'>==</span> <span class='st'>"GDP"</span><span class='op'>)</span>  <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_longer.html'>pivot_longer</a></span><span class='op'>(</span>cols <span class='op'>=</span> <span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>starts_with</a></span><span class='op'>(</span><span class='st'>"x"</span><span class='op'>)</span>,  </span>
+<span>               names_to <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"series"</span>, <span class='st'>"year"</span><span class='op'>)</span>,  </span>
+<span>               names_pattern <span class='op'>=</span> <span class='st'>"x(\\d+)_yr(\\d+)"</span>,  </span>
+<span>               values_to <span class='op'>=</span> <span class='st'>"GDP"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>country_name</span>, <span class='va'>country_code</span>, <span class='va'>year</span>, <span class='va'>GDP</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>final_df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span><span class='va'>co2</span>, <span class='va'>gdp</span>, by <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"country_code"</span>, <span class='st'>"country_name"</span>, <span class='st'>"year"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>final_df</span></span></code></pre>
+</div>
+<pre><code># A tibble: 8,778 × 5
+   country_name country_code year     CO2   GDP
+   &lt;chr&gt;        &lt;chr&gt;        &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;
+ 1 Afghanistan  AFG          1990  0.191     NA
+ 2 Afghanistan  AFG          1991  0.181     NA
+ 3 Afghanistan  AFG          1992  0.127     NA
+ 4 Afghanistan  AFG          1993  0.109     NA
+ 5 Afghanistan  AFG          1994  0.0966    NA
+ 6 Afghanistan  AFG          1995  0.0888    NA
+ 7 Afghanistan  AFG          1996  0.0823    NA
+ 8 Afghanistan  AFG          1997  0.0756    NA
+ 9 Afghanistan  AFG          1998  0.0713    NA
+10 Afghanistan  AFG          1999  0.0582    NA
+# ℹ 8,768 more rows</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Convert specific columns to numeric</span></span>
+<span><span class='va'>final_df</span><span class='op'>$</span><span class='va'>CO2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>final_df</span><span class='op'>$</span><span class='va'>CO2</span><span class='op'>)</span></span>
+<span><span class='va'>final_df</span><span class='op'>$</span><span class='va'>GDP</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>final_df</span><span class='op'>$</span><span class='va'>GDP</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='co'># Replace specific NA values with actual NA</span></span>
+<span><span class='va'>final_df</span><span class='op'>[</span><span class='va'>final_df</span> <span class='op'>==</span> <span class='st'>"NA"</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='cn'>NA</span></span>
+<span><span class='va'>final_df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/na.fail.html'>na.omit</a></span><span class='op'>(</span><span class='va'>final_df</span><span class='op'>)</span></span>
+<span><span class='co'># or</span></span>
+<span><span class='va'>final_df</span> <span class='op'>&lt;-</span> <span class='va'>final_df</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/stats/complete.cases.html'>complete.cases</a></span><span class='op'>(</span><span class='va'>final_df</span><span class='op'>)</span>, <span class='op'>]</span></span>
+<span><span class='va'>final_df</span><span class='op'>$</span><span class='va'>year</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>final_df</span><span class='op'>$</span><span class='va'>year</span><span class='op'>)</span></span>
+<span><span class='va'>final_df</span></span></code></pre>
+</div>
+<pre><code># A tibble: 6,977 × 5
+   country_name country_code  year    CO2   GDP
+   &lt;chr&gt;        &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+ 1 Afghanistan  AFG           2002 0.0668  943.
+ 2 Afghanistan  AFG           2003 0.0730  971.
+ 3 Afghanistan  AFG           2004 0.0549  972.
+ 4 Afghanistan  AFG           2005 0.0804 1076.
+ 5 Afghanistan  AFG           2006 0.0898 1121.
+ 6 Afghanistan  AFG           2007 0.110  1287.
+ 7 Afghanistan  AFG           2008 0.166  1336.
+ 8 Afghanistan  AFG           2009 0.240  1575.
+ 9 Afghanistan  AFG           2010 0.304  1771.
+10 Afghanistan  AFG           2011 0.409  1750.
+# ℹ 6,967 more rows</code></pre>
+</div>
+##Making line plot of both variables - December 8th
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Aggregate data</span></span>
+<span><span class='va'>agg_data</span> <span class='op'>&lt;-</span> <span class='va'>final_df</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>year</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span></span>
+<span>    CO2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>CO2</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,</span>
+<span>    GDP <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>GDP</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span>  <span class='op'>)</span></span>
+<span><span class='co'># Print agg_data to check the aggregated data</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>agg_data</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code># A tibble: 31 × 3
+    year   CO2   GDP
+   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1  1990  3.86 6939.
+ 2  1991  3.84 7155.
+ 3  1992  3.85 7443.
+ 4  1993  3.79 7654.
+ 5  1994  3.77 7914.
+ 6  1995  3.85 8319.
+ 7  1996  3.91 8657.
+ 8  1997  3.92 9052.
+ 9  1998  3.91 9270.
+10  1999  3.91 9616.
+# ℹ 21 more rows</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Plotting</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>agg_data</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>year</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>GDP</span>, color <span class='op'>=</span> <span class='st'>"GDP"</span><span class='op'>)</span>, size <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>CO2</span>, color <span class='op'>=</span> <span class='st'>"CO2"</span><span class='op'>)</span>, size <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Year"</span>, y <span class='op'>=</span> <span class='st'>"Values"</span>, title <span class='op'>=</span> <span class='st'>"GDP and CO2 Over Time"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_color_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>GDP <span class='op'>=</span> <span class='st'>"blue"</span>, CO2 <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_y_continuous</a></span><span class='op'>(</span>trans <span class='op'>=</span> <span class='st'>'log2'</span>, breaks <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2000</span>, <span class='fl'>10000</span>, <span class='fl'>20000</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<img src="final-project_files/figure-html5/unnamed-chunk-9-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'>##Trying two axes - without cowplot</span></span>
+<span></span>
+<span><span class='va'>agg_data</span> <span class='op'>&lt;-</span> <span class='va'>final_df</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>year</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span></span>
+<span>    CO2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>CO2</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,</span>
+<span>    GDP <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>GDP</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span>  <span class='op'>)</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>agg_data</span><span class='op'>$</span><span class='va'>year</span>, <span class='va'>agg_data</span><span class='op'>$</span><span class='va'>CO2</span>, type <span class='op'>=</span> <span class='st'>"l"</span>, col <span class='op'>=</span> <span class='st'>"red"</span>, ylab <span class='op'>=</span> <span class='st'>"CO2"</span>, xlab <span class='op'>=</span> <span class='st'>"Year"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='co'># Add a second y-axis for GDP on the right side</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/graphics/par.html'>par</a></span><span class='op'>(</span>new <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>agg_data</span><span class='op'>$</span><span class='va'>year</span>, <span class='va'>agg_data</span><span class='op'>$</span><span class='va'>GDP</span>, type <span class='op'>=</span> <span class='st'>"l"</span>, col <span class='op'>=</span> <span class='st'>"blue"</span>, yaxt <span class='op'>=</span> <span class='st'>"n"</span>, xaxt <span class='op'>=</span> <span class='st'>"n"</span>, ylab <span class='op'>=</span> <span class='st'>""</span>, xlab <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/graphics/axis.html'>axis</a></span><span class='op'>(</span><span class='fl'>4</span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/graphics/mtext.html'>mtext</a></span><span class='op'>(</span><span class='st'>"GDP"</span>, side <span class='op'>=</span> <span class='fl'>4</span>, line <span class='op'>=</span> <span class='fl'>3</span>, col <span class='op'>=</span> <span class='st'>"blue"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='co'># Add legend</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/graphics/legend.html'>legend</a></span><span class='op'>(</span><span class='st'>"topleft"</span>, legend <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"CO2"</span>, <span class='st'>"GDP"</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"red"</span>, <span class='st'>"blue"</span><span class='op'>)</span>, lty <span class='op'>=</span> <span class='fl'>1</span>, cex <span class='op'>=</span> <span class='fl'>0.8</span><span class='op'>)</span></span>
+<span></span>
+<span></span>
+<span><span class='co'># Add title</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/graphics/title.html'>title</a></span><span class='op'>(</span>main <span class='op'>=</span> <span class='st'>"Worldwide CO2 and GDP over time"</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="final-project_files/figure-html5/unnamed-chunk-9-2.png" width="624" /></p>
+</div>
+<p>December 8th - Things still missing for my final project</p>
+<p>One line chart graph that has one line showing CO2 over time and one line showing GDP over time. This will show the relationship of the variables. Use final_df for this</p>
+<p>One regression table. Use final_df for this.</p>
+<p>Everything else just write up the lab report.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

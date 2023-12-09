@@ -160,75 +160,6 @@ copy2 <- CO2 |>
 copy2
 
 ```
-##Made 'final_df, which is the graph I can use to make the regression and the main relationship of interest - December 8th
-```{r}
-df <- final_wb_data |>
-  janitor::clean_names() |>
-  mutate(series_name = if_else(series_name == "CO2 emissions (metric tons per capita)", "CO2", "GDP")) 
-
-co2 <- df |>
-  filter(series_name == "CO2") |>
-  pivot_longer(cols = starts_with("x"),  
-               names_to = c("series", "year"),  
-               names_pattern = "x(\\d+)_yr(\\d+)",
-               values_to = "CO2") %>%
-  select(country_name, country_code, year, CO2)
-
-
-gdp <- df |>
-  filter(series_name == "GDP")  |>
-  pivot_longer(cols = starts_with("x"),  
-               names_to = c("series", "year"),  
-               names_pattern = "x(\\d+)_yr(\\d+)",  
-               values_to = "GDP") %>%
-  select(country_name, country_code, year, GDP)
-
-final_df <- left_join(co2, gdp, by = c("country_code", "country_name", "year"))
-```
-
-##Making line plot of both variables - December 8th
-```{r}
-
-ggplot(final_df, aes(x = year, y = GDP)) +
-  geom_line() 
-
-  ggplot(final_df, aes(x = year, y = CO2)) +
-  geom_line() 
-
-#returns multiple lines
-ggplot(final_df, aes(x = year, group = country_name)) +
-  geom_line(aes(y = GDP, color = "GDP"), size = 1) +
-  geom_line(aes(y = CO2, color = "CO2"), size = 1) +
-  labs(x = "Year", y = "Values", title = "GDP and CO2 Over Time") +
-  scale_color_manual(values = c(GDP = "blue", CO2 = "red")) +
-  theme_minimal()
-
-  
-#tried making each year into a mean but it returns a blank graph
-agg_data <- final_df |>
-  group_by(year) |>
-  summarise(
-    CO2 = mean(CO2), 
-    GDP = mean(GDP)
-  )
-ggplot(agg_data, aes(x = year)) +
-  geom_line(aes(y = GDP, color = "GDP"), size = 1) +
-  geom_line(aes(y = CO2, color = "CO2"), size = 1) +
-  labs(x = "Year", y = "Values", title = "GDP and CO2 Over Time") +
-  scale_color_manual(values = c(GDP = "blue", CO2 = "red")) +
-  theme_minimal()
-  
-##new try
-
-ggplot(final_df, aes(x = year)) +
-  geom_line(aes(y = GDP, color = "GDP"), size = 1) +
-  geom_line(aes(y = CO2, color = "CO2"), size = 1) +
-  labs(x = "Year", y = "Values", title = "GDP and CO2 Over Time") +
-  scale_color_manual(values = c(GDP = "blue", CO2 = "red")) +
-  theme_minimal()
-```
-
-
 #Make scatter plot and filter out GDP
 ```{r}
 library(ggplot2)
@@ -246,6 +177,117 @@ scatterplot2
 ##Explanation
 
 This second visualization is of the same 'top 20 GDP' countries, but with their CO2 emissions over time. As we can see on the graph, CO2 emissions have increased over time. Thus, we notice that both there is a general trend where CO2 and GDP grow over time. It is important to note that this is not necessarily a causal relationship. Nevertheless, it is interesting to see how GDP has grown more over time than CO2.
+
+
+##Made 'final_df, which is the graph I can use to make the regression and the main relationship of interest - December 8th
+```{r}
+df <- final_wb_data |>
+  janitor::clean_names() |>
+  mutate(series_name = if_else(series_name == "CO2 emissions (metric tons per capita)", "CO2", "GDP")) 
+
+co2 <- df |>
+  filter(series_name == "CO2") |>
+  pivot_longer(cols = starts_with("x"),  
+               names_to = c("series", "year"),  
+               names_pattern = "x(\\d+)_yr(\\d+)",
+               values_to = "CO2") %>%
+  select(country_name, country_code, year, CO2)
+
+gdp <- df |>
+  filter(series_name == "GDP")  |>
+  pivot_longer(cols = starts_with("x"),  
+               names_to = c("series", "year"),  
+               names_pattern = "x(\\d+)_yr(\\d+)",  
+               values_to = "GDP") %>%
+  select(country_name, country_code, year, GDP)
+
+final_df <- left_join(co2, gdp, by = c("country_code", "country_name", "year"))
+final_df
+
+# Convert specific columns to numeric
+final_df$CO2 <- as.numeric(final_df$CO2)
+final_df$GDP <- as.numeric(final_df$GDP)
+
+# Replace specific NA values with actual NA
+final_df[final_df == "NA"] <- NA
+final_df <- na.omit(final_df)
+# or
+final_df <- final_df[complete.cases(final_df), ]
+final_df$year <- as.numeric(final_df$year)
+final_df
+
+
+```
+
+##Making line plot of both variables - December 8th
+```{r}
+# Aggregate data
+agg_data <- final_df %>%
+  group_by(year) %>%
+  summarize(
+    CO2 = mean(CO2, na.rm = TRUE),
+    GDP = mean(GDP, na.rm = TRUE)
+  )
+# Plotting with only one y-axis (both lines looks straight)
+library(ggplot2)
+ggplot(agg_data, aes(x = year)) +
+  geom_line(aes(y = GDP, color = "GDP"), size = 1) +
+  geom_line(aes(y = CO2, color = "CO2"), size = 1) +
+  labs(x = "Year", y = "Values", title = "GDP and CO2 Over Time") +
+  scale_color_manual(values = c(GDP = "blue", CO2 = "red")) +
+  theme_minimal() +
+  scale_y_continuous(trans = 'log2', breaks = c(2000, 10000, 20000))
+
+
+
+##Two axes exist (missing right GDP label) ********The one I'm choosing
+agg_data <- final_df |>
+  group_by(year) |>
+  summarize(
+    CO2 = mean(CO2, na.rm = TRUE),
+    GDP = mean(GDP, na.rm = TRUE)
+  )
+plot(agg_data$year, agg_data$CO2, type = "l", col = "red", ylab = "CO2", xlab = "Year")
+# Add a second y-axis for GDP on the right side
+par(new = TRUE)
+plot(agg_data$year, agg_data$GDP, type = "l", col = "blue", yaxt = "n", xaxt = "n", ylab = "", xlab = "")
+axis(4)
+mtext("GDP", side = 4, line = 3, col = "blue")
+
+legend("topleft", legend = c("CO2", "GDP"), col = c("red", "blue"), lty = 1, cex = 0.8)
+title(main = "Worldwide CO2 and GDP over time")
+
+
+
+
+
+##Trying to add GDP label to right axis
+library(latticeExtra)
+p1 <- xyplot(CO2 ~ year, data = agg_data, type = "l", col = "red", ylab = "CO2", xlab = "Year")
+p2 <- xyplot(GDP ~ year, data = agg_data, type = "l", col = "blue", ylab = "GDP", xlab = "")
+
+# Combine the plots using doubleYScale
+p_combined <- doubleYScale(p1, p2, use.style = TRUE, add.ylab2 = TRUE, style2 = 1, text.adj = c(1, 0))
+
+# Add a title
+p_combined <- update(p_combined, main = "Dual Plot: CO2 and GDP Over Time")
+
+print(p_combined)
+
+
+```
+
+#Making a Regression table
+```{r}
+library(modelsummary)
+dual_regression <- lm(CO2 ~ GDP, data = final_df) 
+
+modelsummary::modelsummary(dual_regression,
+                           statistic = c("s.e. = {std.error}",
+                                         "p = {p.value}"),
+                           gof_map = c("nobs", "r.squared", "adj.r.squared"))
+```
+
 
 
 
