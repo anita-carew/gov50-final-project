@@ -9,7 +9,14 @@ output:
 
 
 #Cleaning data set
+
 ```{r}
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(readr)
+library(base)
+final_wb_data <- read_csv("final_wb_data.csv")
 df <- final_wb_data |>
   janitor::clean_names() |>
   mutate(series_name = if_else(series_name == "CO2 emissions (metric tons per capita)", "CO2", "GDP")) 
@@ -48,6 +55,8 @@ final_df
 ```
 
 
+
+
 #Introduction
 
  My research question for this project is: Does a country's GDP have any effect on its carbon emissions? The widely held belief by political and climate scientists has long been that the higher a country's GDP, the more their carbon emissions increase. This goes along with the idea that if a country is more economically developed, they use more technology to support their quality of lifestyle, and thus their high waste and consumption will lead to higher carbon emissions. There is only a little evidence such as the 2016 report by the International Energy Agency that claims some countries do exist that have been able to reduce Green House Gas (GHG) emissions while growing GDP. Thus, it is important to examine whether this relationship exists, and if so, does a better economy always make our planet suffer?  
@@ -55,18 +64,18 @@ final_df
 My main coefficient of interest is the coefficient associated with the GDP variable in my regression model. My main outcome of interest is CO2 emissions. Therefore, my null hypothesis is that there is no correlation or relationship between GDP and CO2 emissions worldwide. I will reject this hypothesis if I notice any correlation in my visualizations or significance within my regression table.
 
 
+
+
+
 #Data section
 
 My data is derived from the World Bank. My sample is made up of all the countries the World Bank measures, including some territories (total: 217). The independent variable is GDP per capita, PPP (current international $). This is measured by using the gross domestic product (GDP) expressed in current international dollars converted by purchasing power parity (PPP) conversion factor. The dependent variable is carbon emissions which we will assume rise as a result of higher GDP. This dependent variable is measures by carbon dioxide emissions (metric tons per capita), which is seen through emissions which are stemming from the burning of fossil fuels and the manufacture of cement. They include carbon dioxide produced during consumption of solid, liquid, and gas fuels and gas flaring. 
 
 My research design is cross-sectional. In order to produce a plot that summarizes the main outcome variable, worldwide CO2 emissions, I found the mean of CO2 emissions of every country in the data set for every year and plotted it on a line chart, ranging from 1990-2020. As can be seen below, the plot reflects an increasing trend until around 2007, when emissions began to decline with much variability, a steep decline from 2015 until 2020. 
+
 ##First visualization
+
 ```{r}
-library(tidyverse)
-library(ggplot2)
-library(dplyr)
-library(readr)
-library(base)
 ##Aggregate data set
 agg_data <- final_df |>
   group_by(year) |>
@@ -90,9 +99,15 @@ labs(x = "Years",
 
 
 
+
+
+
 #Results section
+
 Below you can see the plot of main analysis, where both CO2 emissions are GDP per capita are measured for every year from 1990-2020. As mentioned before, an aggregate data set was used that found the worldwide mean from each year. Due to the difference of scale between how GDP and CO2 emissions are measured, there are two y-axes. The left side shows average CO2 emissions (metric tons per capita), while the right side represents average GDP per capita, PPP (current international $).
+
 #Second visualization
+
 ```{r}
 #Graph with only CO2
 plot(agg_data$year, agg_data$CO2, type = "l", col = "red", ylab = "CO2", xlab = "Year")
@@ -106,7 +121,9 @@ legend("topleft", legend = c("CO2", "GDP"), col = c("red", "blue"), lty = 1, cex
 title(main = "Worldwide CO2 and GDP over time")
 
 ```
+
 ##Regression output
+
 ```{r}
 library(modelsummary)
 ##Creating new variable for log of GDP
@@ -127,6 +144,7 @@ When making the regression table, I included the log value of GDP seeing as econ
 The main coefficient of interest is the one associated with log_GDP, which is found to be 0.910 with a standard error of 0.052 and a p-value less than 0.001. This indicates a statistically significant positive relationship between log_GDP and CO2 emissions. In the context of this study, it shows that for every one-unit increase in the log of GDP per capita, there is a 0.910 unit increase in CO2 emissions, holding other variables constant. Overall, all the p=values in this table were p=<0.001, and seeing as a p-value less than 0.05 is often considered statistically significant, it suggests that all coefficients in this table are statistically significant.
 
 The intercept is -6.504, which represents the estimated CO2 emissions when log_GDP and GDP are both zero, though this might not have a practical interpretation in this context because GDP cannot realistically be zero.
+
 
 
 
