@@ -219,6 +219,28 @@ final_df
 
 ```
 
+
+#making dependent variable plot - CO2
+```{r}
+
+# Plot CO2 in a line chart in firstt format option
+plot(agg_data$year, agg_data$CO2, type = "l", col = "blue", xlab = "Year", ylab = "Average CO2 emissions (metric tons per capita)", main = "Worldwide CO2 emissions over time")
+
+##plot CO2 in a scatter plot in second format option
+ggplot(data = agg_data,
+       mapping = aes(x = year,
+                     y = CO2)) +
+  geom_point() + geom_smooth() +
+labs(x = "Years",
+       y = "Average CO2 emissions (metric tons per capita)",
+       title = "Worldwide CO2 over time",
+       subtitle = "plot visualizing main outcome of interest",
+       source = "World Bank, 1990-2020")
+
+
+
+```
+
 ##Making line plot of both variables - December 8th
 ```{r}
 # Aggregate data
@@ -228,6 +250,7 @@ agg_data <- final_df %>%
     CO2 = mean(CO2, na.rm = TRUE),
     GDP = mean(GDP, na.rm = TRUE)
   )
+agg_data
 # Plotting with only one y-axis (both lines looks straight)
 library(ggplot2)
 ggplot(agg_data, aes(x = year)) +
@@ -292,11 +315,128 @@ modelsummary::modelsummary(dual_regression,
 
 
 
-December 8th - Things still missing for my final project
+December 10th - Final Project Draft
 
-One line chart graph that has one line showing CO2 over time and one line showing GDP over time. This will show the relationship of the variables. Use final_df for this
+#Cleaning data
+```{r}
+df <- final_wb_data |>
+  janitor::clean_names() |>
+  mutate(series_name = if_else(series_name == "CO2 emissions (metric tons per capita)", "CO2", "GDP")) 
 
-One regression table. Use final_df for this.
+#Pivot longer CO2 variable
+co2 <- df |>
+  filter(series_name == "CO2") |>
+  pivot_longer(cols = starts_with("x"),  
+               names_to = c("series", "year"),  
+               names_pattern = "x(\\d+)_yr(\\d+)",
+               values_to = "CO2") |>
+  select(country_name, country_code, year, CO2)
 
-Everything else just write up the lab report.
+#Pivot longer GDP variable
+gdp <- df |>
+  filter(series_name == "GDP")  |>
+  pivot_longer(cols = starts_with("x"),  
+               names_to = c("series", "year"),  
+               names_pattern = "x(\\d+)_yr(\\d+)",  
+               values_to = "GDP") |>
+  select(country_name, country_code, year, GDP)
+#Left join data
+final_df <- left_join(co2, gdp, by = c("country_code", "country_name", "year"))
 
+# Convert specific columns to numeric
+final_df$CO2 <- as.numeric(final_df$CO2)
+final_df$GDP <- as.numeric(final_df$GDP)
+
+# Get rid of NA values
+final_df[final_df == "NA"] <- NA
+final_df <- na.omit(final_df)
+# or
+final_df <- final_df[complete.cases(final_df), ]
+final_df$year <- as.numeric(final_df$year)
+final_df
+```
+
+
+#Introduction: describe the research question and main hypothesis; describe why it is important/interesting. (1-2 paragraphs) (2pts)
+
+ My research question for this project is: Does a country's GDP have any effect on its carbon emissions? The widely held belief by political and climate scientists has long been that the higher a country's GDP, the more their carbon emissions increase. This goes along with the idea that if a country is more economically developed, they use more technology to support their quality of lifestyle, and thus their high waste and consumption will lead to higher carbon emissions. There is only a little evidence such as the 2016 report by the International Energy Agency that claims some countries do exist that have been able to reduce Green House Gas (GHG) emissions while growing GDP. Thus, it is important to examine whether this relationship exists, and if so, does a better economy always make our planet suffer?  
+
+My main coefficient of interest is the coefficient associated with the GDP variable in my regression model. My main outcome of interest is CO2 emissions. Therefore, my null hypothesis is that there is no correlation or relationship between GDP and CO2 emissions worldwide. I will reject this hypothesis if I notice any correlation in my visualizations or significance within my regression table.
+
+#Data section: 2-3 paragraphs + plot visualizing main outcome of interest. Briefly describes the data source, describes how the key dependent and independent variables are measured (e.g., a survey, statistical model, or expert coding), and also produces a plot that summarizes the dependent variable. note if your research design is cross-sectional (most projects will be of this type) or one of the other designs we discussed (randomized experiment, before-and-after, differences-in-differences). (3pts)
+
+My data is derived from the World Bank. My sample is made up of all the countries the World Bank measures, including some territories (total: 217). The independent variable is GDP per capita, PPP (current international $). This is measured by using the gross domestic product (GDP) expressed in current international dollars converted by purchasing power parity (PPP) conversion factor. The dependent variable is carbon emissions which we will assume rise as a result of higher GDP. This dependent variable is measures by carbon dioxide emissions (metric tons per capita), which is seen through emissions which are stemming from the burning of fossil fuels and the manufacture of cement. They include carbon dioxide produced during consumption of solid, liquid, and gas fuels and gas flaring. 
+
+My research design is cross-sectional. In order to produce a plot that summarizes the main outcome variable, worldwide CO2 emissions, I found the mean of CO2 emissions of every country in the data set for every year and plotted it on a line chart, ranging from 1990-2020. As can be seen below, the plot reflects an increasing trend until around 2007, when emissions began to decline with much variability, a steep decline from 2015 until 2020. 
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(readr)
+library(base)
+##Aggregate data set
+agg_data <- final_df |>
+  group_by(year) |>
+  summarize(
+    CO2 = mean(CO2, na.rm = TRUE),
+    GDP = mean(GDP, na.rm = TRUE)
+  )
+##CO2 plot *first option 
+plot(agg_data$year, agg_data$CO2, type = "l", col = "blue", xlab = "Year", ylab = "Average CO2 emissions (metric tons per capita)", main = "Worldwide CO2 emissions over time")
+
+##CO2 plot *second option 
+ggplot(data = agg_data,
+       mapping = aes(x = year,
+                     y = CO2)) +
+  geom_point() + geom_smooth() +
+labs(x = "Years",
+       y = "Average CO2 emissions (metric tons per capita)",
+       title = "Worldwide CO2 over time",
+       subtitle = "plot visualizing main outcome of interest",
+       source = "World Bank, 1990-2020")
+
+```
+
+
+
+#Results section: plot of main analysis + regression output + 2-3 paragraphs of description and interpretation of the plots and regression (including interpreting the main coefficient of interest and describing if it is statistically significant and if we should interpret it causally). Interpret (in plain English) the main coefficient of interest in your regression. You should also comment on the statistical significance of the estimated coefficient and whether or not you believe the coefficient to represent a causal effect.This section could be longer if you choose to include additional analyses. (8pts)
+Below you can see the plot of main analysis, where both CO2 emissions are GDP per capita are measured for every year from 1990-2020. As mentioned before, an aggregate data set was used that found the worldwide mean from each year. Due to the difference of scale between how GDP and CO2 emissions are measured, there are two y-axes. The left side shows average CO2 emissions (metric tons per capita), while the right side represents average GDP per capita, PPP (current international $).
+```{r}
+#Graph with only CO2
+plot(agg_data$year, agg_data$CO2, type = "l", col = "red", ylab = "CO2", xlab = "Year")
+# Adding a second y-axis for GDP on the right side
+par(new = TRUE)
+plot(agg_data$year, agg_data$GDP, type = "l", col = "blue", yaxt = "n", xaxt = "n", ylab = "", xlab = "")
+axis(4)
+mtext("GDP", side = 4, line = 3, col = "blue")
+
+legend("topleft", legend = c("CO2", "GDP"), col = c("red", "blue"), lty = 1, cex = 0.8)
+title(main = "Worldwide CO2 and GDP over time")
+
+```
+```{r}
+#Regression Table
+library(modelsummary)
+dual_regression <- lm(CO2 ~ GDP, data = final_df) 
+
+modelsummary::modelsummary(dual_regression,
+                           statistic = c("s.e. = {std.error}",
+                                         "p = {p.value}"),
+                           gof_map = c("nobs", "r.squared", "adj.r.squared"))
+```
+
+The plot of main analysis shows that GDP has steadily grown over time. Nevertheless, it does not suggest any correlation between GDP and CO2 emissions. 
+
+The R-squared value is 0.646, indicating that the proportion of the variance in the dependent variable (CO2 emissions in this case) that is explained by the independent variable(s) (GDP in this case) is 64.6%.
+
+The intercept is 0.840 with a standard error of 0.046, and it is statistically significant at the 0.001 level. In this study it suggests that when GDP is zero, the estimated CO2 emissions are 0.840. However, the interpretation of this intercept might not have a meaningful real-world interpretation in the context of CO2 emissions and GDP because GDP cannot realistically be zero.
+
+The coefficient for GDP is 0.000 with a standard error of 0.000, and it is also highly statistically significant at the 0.001 level. This represents the estimated change in CO2 emissions associated with a one-unit increase in GDP. With it being 0, this suggests that the effect of GDP on CO2 emissions is extremely small, or non-existent in this model. Thus, I do not believe the coefficient represents a causal effect in this study and that it does not reject the null hypothesis. 
+
+
+
+#Conclusion section: 1 paragraph (i) summarizing results and assessing the extent to which you find support for your hypothesis; (ii) describing limitations of the analysis and threats to inference (missing data, confounding, etc), and stating how you could improve your analysis if you had more time/money. (e.g., improved data that would be useful to collect). (2pts) 
+The results of this study do not reject the null hypothesis. As was seen in the coefficient value, GDP had little effect on CO2 over time. Nevertheless, the practical significance of this relationship is different when viewed from a real world scenario, which is why we must evaluate this study. One possible limitation is that some data was NA from the data set. In order to complete the calculations and make visualizations, I had to remove these rows, which means there was some missing data. We were also limited by the presence of potential confounding variables not included in the model might affect the observed relationship between GDP and CO2 emissions. For instance, factors like technological advancements, government policies, or changes in energy sources could confound the observed association. Additionally, the assumption of a linear relationship between GDP and CO2 emissions might oversimplify the underlying dynamics, as the relationship could be nonlinear or subject to threshold effects.
+
+To enhance the analysis, more time and resources could be allocated to collect improved and comprehensive data. This could involve obtaining detailed information on country-specific policies, technological advancements, and energy efficiency measures over time. Including such variables could help address confounding and provide a more nuanced understanding of the factors influencing CO2 emissions. 
